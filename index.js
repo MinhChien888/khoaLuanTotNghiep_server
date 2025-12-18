@@ -9,6 +9,7 @@ app.use(cors());
 app.options('*', cors())
 const stripeRoutes = require('./routes/stripe.js');
 app.use("/api/stripe/webhook", stripeRoutes);
+
 //middleware
 app.use(bodyParser.json());
 app.use(express.json());
@@ -29,6 +30,7 @@ const bannersSchema = require('./routes/banners.js');
 const homeSideBannerSchema = require('./routes/homeSideBanner.js');
 const homeBottomBannerSchema = require('./routes/homeBottomBanner.js');
 const checkoutSchema = require('./routes/checkout.js');
+const addressRoutes = require("./routes/address");
 
 
 app.use("/api/user",userRoutes);
@@ -47,6 +49,7 @@ app.use(`/api/homeSideBanners`, homeSideBannerSchema);
 app.use(`/api/homeBottomBanners`, homeBottomBannerSchema);
 app.use(`/api/checkout`, checkoutSchema);
 app.use("/api/stripe", stripeRoutes);
+app.use("/api/addresses", addressRoutes);
 
 
 
